@@ -214,7 +214,7 @@
 
         .swiper-pagination
           > span.swiper-pagination-bullet-active
-            background #02a774
+            background #66ccff
 
     .msite_shop_list
       top-border-1px(#e4e4e4)

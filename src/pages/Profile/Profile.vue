@@ -110,7 +110,7 @@
     width 100%
     overflow hidden
     .header
-      background-color #02a774
+      background-color #66ccff
       position fixed
       z-index 100
       left 0
@@ -154,7 +154,7 @@
         clearFix()
         position relative
         display block
-        background #02a774
+        background #66ccff
         padding 20px 10px
         .profile_image
           float left

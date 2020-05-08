@@ -22,7 +22,7 @@
   .search  //搜索
     width 100%
     .header
-      background-color #02a774
+      background-color #66ccff
       position fixed
       z-index 100
       left 0
@@ -81,8 +81,8 @@
         &.search_submit
           float right
           width 18%
-          border 4px solid #02a774
+          border 4px solid #66ccff
           font-size 16px
           color #fff
-          background-color #02a774
+          background-color #66ccff
 </style>

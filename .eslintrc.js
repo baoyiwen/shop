@@ -29,5 +29,12 @@ module.exports = {
     'semi': "off",
     'comma-dangle': 'off',
     'space-before-function-paren ': 'off',
+    'no-unused-vars': 'off',
+    'space-infix-ops': 'off',
+    'no-multiple-empty-lines': "off",
+    'keyword-spacing': "off",
+    'space-before-blocks': "off",
+    'spaced-comment': "off",
+    'arrow-spacing': 'off',
   }
 }

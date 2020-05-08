@@ -28,7 +28,7 @@
 
 <style scoped lang='stylus' ref='stylesheet/stylus'>
   .header
-    background-color #02a774
+    background-color #66ccff
     position fixed
     z-index 100
     left 0

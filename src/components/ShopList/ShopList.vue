@@ -342,12 +342,12 @@
                 .delivery_left
                   color #fff
                   margin-right -10px
-                  background-color #02a774
-                  border 1px solid #02a774
+                  background-color #66ccff
+                  border 1px solid #66ccff
 
                 .delivery_right
-                  color #02a774
-                  border 1px solid #02a774
+                  color #66ccff
+                  border 1px solid #66ccff
 
             .shop_distance
               clearFix()
