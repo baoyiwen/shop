@@ -2,23 +2,23 @@
   <section class="profile">
     <HeaderTop title="我的"></HeaderTop>
     <section class="profile-number">
-      <router-link to="/login" class="profile-link">
+      <span @click="goToLogin" class="profile-link">
         <div class="profile_image">
           <i class="iconfont icon-person"></i>
         </div>
         <div class="user-info">
-          <p class="user-info-top">登录/注册</p>
+          <p class="user-info-top" v-if="!userInfo.phone">{{userInfo.name || '登录/注册'}}</p>
           <p>
             <span class="user-icon">
               <i class="iconfont icon-shouji icon-mobile"></i>
             </span>
-            <span class="icon-mobile-number">暂无绑定手机号</span>
+            <span class="icon-mobile-number">{{userInfo.phone || '暂无绑定手机号'}}</span>
           </p>
         </div>
         <span class="arrow">
           <i class="iconfont icon-jiantou1"></i>
         </span>
-      </router-link>
+      </span>
 <!--      <a href="javascript:" >-->
 <!--       -->
 <!--      </a>-->
@@ -91,15 +91,40 @@
         </div>
       </a>
     </section>
+    <section class="profile_my_order border-1px" style="text-align: center">
+      <!-- 退出登陆按钮 -->
+        <mt-button @click="loginOut" type="danger" style="width: 90%" v-show="userInfo._id">退出登陆</mt-button>
+    </section>
   </section>
 </template>
 
 <script>
   import HeaderTop from '../../components/HeaderTop/HeaderTop'
+  import {mapState} from 'vuex'
+  import {MessageBox, Toast} from 'mint-ui'
   export default {
     name: '',
     components: {
       HeaderTop,
+    },
+    computed: {
+      ...mapState(['userInfo']),
+    },
+    methods: {
+      goToLogin () {
+        if (!this.userInfo._id) {
+          this.$router.replace('/login');
+        }
+      },
+      loginOut () {
+        MessageBox.confirm('确认退出？').then(action => {
+          // 请求退出
+          this.$store.dispatch('logout');
+          Toast('登出成功');
+        }, action => {
+          console.log('点击了取消!')
+        })
+      }
     }
   }
 </script>
@@ -268,9 +293,12 @@
           color #333
           display flex
           justify-content space-between
+          position relative
           span
             display block
           .my_order_icon
+            position absolute
+            right 10px
             width 10px
             height 10px
             .icon-jiantou1

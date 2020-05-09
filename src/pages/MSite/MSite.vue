@@ -1,24 +1,16 @@
 <template>
   <section class="msite">
     <!--首页头部-->
-<!--    <header class="header">-->
-<!--          <span class="header_search">-->
-<!--            <i class="iconfont icon-sousuo"></i>-->
-<!--          </span>-->
-<!--      <span class="header_title">-->
-<!--            <span class="header_title_text ellipsis">昌平区北七家宏福科技园(337省道北)</span>-->
-<!--          </span>-->
-<!--      <span class="header_login">-->
-<!--            <span class="header_login_text">登录|注册</span>-->
-<!--          </span>-->
-<!--    </header>-->
     <HeaderTop :title="address.name">
-      <span class="header_search" slot="left">
+      <router-link to="/search" class="header_search" slot="left">
         <i class="iconfont icon-sousuo"></i>
-      </span>
-      <span class="header_login" solt="right">
-        <span class="header_login_text">登录|注册</span>
-      </span>
+      </router-link>
+      <router-link :to="userInfo._id ? '/userinfo' : '/login'" class="header_login" slot="right">
+        <span class="header_login_text" v-if="!userInfo._id">登录|注册</span>
+        <span class="header_login_text" v-else>
+          <i class="iconfont icon-person"></i>
+        </span>
+      </router-link>
     </HeaderTop>
     <!--首页导航-->
     <nav class="msite_nav">
@@ -68,7 +60,7 @@
       ShopList
     },
     computed: {
-      ...mapState(['address', 'categorys']),
+      ...mapState(['address', 'categorys', 'userInfo']),
       // 根据categorys一维数组，生成一个二维数组
       categorysArr () {
         const {categorys} = this;
@@ -93,6 +85,7 @@
     mounted () {
       this.$store.dispatch('getCategorys');
       this.$store.dispatch('getShops');
+      console.log(this.userInfo);
     },
     methods: {
 
