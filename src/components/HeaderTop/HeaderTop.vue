@@ -22,7 +22,7 @@
       title: {
         type: String
       }
-    }
+    },
   }
 </script>
 
