@@ -17,7 +17,7 @@
           <li class="food-list-hook" v-for="(good, index) in goods" :key="index">
             <h1 class="title">{{good.name}}</h1>
             <ul>
-              <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index">
+              <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index" @click="showFood(food)">
                 <div class="icon">
                   <img width="57" height="57" :src="food.icon">
                 </div>
@@ -42,23 +42,30 @@
           </li>
         </ul>
       </div>
+      <ShopCart />
     </div>
+    <Food :food="foodInfo" ref="food"/>
   </div>
 </template>
 <script>
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   import CarControl from '../../../components/CarControl/CarControl'
+  import Food from '../../../components/Food/Food'
+  import ShopCart from '../../../components/ShopCart/ShopCart'
   export default {
     name: '',
     data () {
       return {
         scrollY: 0, // 右侧滑动的Y轴坐标(滑动过程实时变化)
         tops: [], // 所有右侧分类li的top组成的数组(列表第一次显示后就不在变化)
+        foodInfo: {}, // 需要显示的food
       }
     },
     components: {
-      CarControl
+      CarControl,
+      Food,
+      ShopCart
     },
     computed: {
       ...mapState(['goods']),
@@ -92,6 +99,14 @@
         const scrollY = -this.tops[index];
         this.scrollY = -scrollY;
         this.foodsScroll.scrollTo(0, scrollY, 300);
+      },
+      showFood (food) {
+        // 设置food
+        console.log(food);
+        this.foodInfo = food;
+        // 显示food属性
+        // 父组件中调用子组件的方法
+        this.$refs.food.toggleShow();
       },
       _initScroll () {
         new BScroll('.menu-wrapper', {

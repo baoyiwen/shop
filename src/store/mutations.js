@@ -12,6 +12,8 @@ import {
   RECEIVE_GOODS,
   INCREMENT_FOOD_COUNT,
   DECREMENT_FOOD_COUNT,
+  CLEAR_CART,
+  RECEIVE_SEARCH_SHOPS
 } from './mutation-types'
 import Vue from 'vue'
 export default {
@@ -48,6 +50,8 @@ export default {
        * 属性值
        * */
       Vue.set(food, 'count', 1);
+      // 将food添加到cartFoods中
+      this.state.cartFoods.push(food);
     } else {
       food.count++;
     }
@@ -55,6 +59,19 @@ export default {
   [DECREMENT_FOOD_COUNT] (state, {food}) {
     if (food.count) {
       food.count--;
+      if (food.count === 0) {
+        // 将food从cartFoods中移除
+        state.cartFoods.splice(state.cartFoods.indexOf(food), 1);
+      }
     }
+  },
+  [CLEAR_CART] (state) {
+    // 清除food中的count
+    state.cartFoods.forEach(food => (food.count = 0));
+    // 清除cartFoods
+    state.cartFoods = [];
+  },
+  [RECEIVE_SEARCH_SHOPS] (state, {searchShops}) {
+    state.searchShops = searchShops;
   },
 }

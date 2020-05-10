@@ -85,7 +85,6 @@
     mounted () {
       this.$store.dispatch('getCategorys');
       this.$store.dispatch('getShops');
-      console.log(this.userInfo);
     },
     methods: {
 
