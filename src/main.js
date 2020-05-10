@@ -9,6 +9,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import {Button} from 'mint-ui'
+import './mock/mockServer' // 加载mockServer
 
 // 注册全局标签
 Vue.component(Button.name, Button);

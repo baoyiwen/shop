@@ -4,7 +4,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -37,6 +37,24 @@ const routes = [
   }, {
     path: '/login',
     component: () => import('../pages/Login/Login.vue')
+  }, {
+    path: '/shop',
+    component: () => import('../pages/Shop/Shop.vue'),
+    children: [
+      {
+        path: '/shop/goods',
+        component: () => import('../pages/Shop/ShopGoods/ShopGoods.vue')
+      }, {
+        path: '/shop/ratings',
+        component: () => import('../pages/Shop/ShopRating/ShopRating.vue')
+      }, {
+        path: '/shop/info',
+        component: () => import('../pages/Shop/ShopInfo/ShopInfo.vue')
+      }, {
+        path: '',
+        redirect: '/shop/goods'
+      },
+    ]
   }
 ]
 

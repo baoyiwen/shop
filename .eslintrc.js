@@ -36,5 +36,6 @@ module.exports = {
     'space-before-blocks': "off",
     'spaced-comment': "off",
     'arrow-spacing': 'off',
+    'no-trailing-spaces': "off"
   }
 }

@@ -12,7 +12,10 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "better-scroll": "^1.15.2",
     "mint-ui": "^2.2.13",
+    "mock.js": "^0.2.0",
+    "mockjs": "^1.1.0",
     "swiper": "^5.3.8",
     "vue": "^2.5.2",
     "vue-router": "^3.1.6",

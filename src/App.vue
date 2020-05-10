@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" ref="stylessheet/stylus">
+<style lang="stylus" ref="stylessheet/stylus" scoped>
   #app
     width 100%
     height 100%

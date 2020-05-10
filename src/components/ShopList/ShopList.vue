@@ -1,7 +1,7 @@
 <template>
   <div class="shop_container">
-    <ul class="shop_list" v-for="(shop, index) in shops" :key="index" v-if="shops.length > 0">
-      <li class="shop_li border-1px">
+    <ul class="shop_list" v-if="shops.length > 0">
+      <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index" @click="$router.push('/shop')">
         <a>
           <div class="shop_left">
             <img class="shop_img" :src="baseImageUrl + shop.image_path">
@@ -64,7 +64,7 @@
   }
 </script>
 
-<style lang='stylus' ref='stylesheet/stylus'>
+<style lang='stylus' ref='stylesheet/stylus' scoped>
   @import '../../common/stylus/mixins.styl'
   .shop_container
     margin-bottom 50px

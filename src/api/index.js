@@ -29,15 +29,15 @@ export const reqLogout = () => ajax(BASE_URL + '/logout')
 /**
  * 获取商家信息
  */
-export const reqShopInfo = () => ajax(BASE_URL + '/info')
+export const reqShopInfo = () => ajax('/info')
 
 /**
  * 获取商家评价数组
  */
-export const reqShopRatings = () => ajax(BASE_URL + '/ratings')
+export const reqShopRatings = () => ajax('/ratings')
 
 /**
  * 获取商家商品数组
  */
-export const reqShopGoods = () => ajax(BASE_URL + '/goods')
+export const reqShopGoods = () => ajax('/goods')
 
